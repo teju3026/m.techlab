@@ -1,0 +1,39 @@
+import numpy as np
+import statistics as s
+import matplotlib.pyplot as plt
+
+data = np.array([12,15,14,10,18,20,22,19,16,14,15,17])
+
+mean = np.mean(data)
+median = np.median(data)
+mode = s.mode(data)
+var = np.var(data, ddof=1)
+std = np.std(data, ddof=1)
+cv = (std/mean)*100
+rng = np.max(data) - np.min(data)
+
+q1, q2, q3 = np.percentile(data, [25,50,75])
+iqr = q3 - q1
+p90 = np.percentile(data, 90)
+
+skew = np.mean((data-mean)**3)/(std**3)
+
+print("Mean:",mean)
+print("Median:",median)
+print("Mode:",mode)
+print("Variance:",var)
+print("Std Dev:",std)
+print("CV:",cv)
+print("Range:",rng)
+print("Quartiles:",q1,q2,q3)
+print("IQR:",iqr)
+print("90th Percentile:",p90)
+print("Skewness:",skew)
+
+plt.hist(data)
+plt.title("Histogram")
+plt.show()
+
+plt.boxplot(data)
+plt.title("Boxplot")
+plt.show()

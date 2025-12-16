@@ -1,0 +1,28 @@
+#3
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
+import statsmodels.api as sm
+from scipy.stats import chi2_contingency
+
+# Data
+x = [1,2,3,4,5,6,7,8,9,10]      # For correlation/regression
+y = [2,4,5,4,5,7,8,8,9,10]     # For correlation/regression
+sample = [50,52,48,55,51,49,53]  # For t-test
+cat1 = ['A', 'A', 'B', 'B', 'A', 'B']  # For chi-square
+cat2 = ['X', 'Y', 'X', 'Y', 'X', 'Y']  # For chi-square
+
+# 1. Pearson Correlation
+print("Correlation:", stats.pearsonr(x, y))
+
+# 2. One-sample t-test (μ = 50)
+print("T-test (μ=50):", stats.ttest_1samp(sample, 50))
+
+# 3. Chi-Square Test
+table = pd.crosstab(cat1, cat2)
+print("Chi-square:", chi2_contingency(table))
+
+# 4. Linear Regression
+X_const = sm.add_constant(x)
+model = sm.OLS(y, X_const).fit()
+print(model.summary())

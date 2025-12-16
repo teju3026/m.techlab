@@ -1,0 +1,24 @@
+import numpy as np
+from scipy import stats
+
+# 1. Binomial Distribution
+n, p = 10, 0.5
+binom = stats.binom.rvs(n, p, size=1000)
+print("Binomial Mean:", np.mean(binom))
+
+# 2. Poisson Distribution
+lam = 3
+pois = stats.poisson.rvs(lam, size=1000)
+print("Poisson Mean:", np.mean(pois))
+
+# 3. Fit Normal Distribution
+data = np.array([45, 50, 55, 60, 52, 48, 58, 62, 54, 49])
+mean, std = np.mean(data), np.std(data)
+z = (data - mean) / std
+print("Mean:", mean)
+print("Std Dev:", std)
+print("Z-scores:", z)
+
+# 4. Probability using Standard Normal Distribution
+prob = stats.norm.cdf(1.96)
+print("P(Z < 1.96):", prob)
