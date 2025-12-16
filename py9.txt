@@ -1,0 +1,29 @@
+import pandas as pd
+
+# 1. Create DataFrame from Dictionary
+data = {
+    "ID": [101, 102, 103],
+    "Name": ["Amit", "Neha", "Rahul"],
+    "Marks": [85, 90, 78]
+}
+
+df = pd.DataFrame(data)
+print("DataFrame:\n", df)
+
+# 2. Access Columns
+print("\nNames Column:\n", df["Name"])
+
+# 3. Access Rows
+print("\nFirst Row:\n", df.loc[0])
+
+# 4. Add New Column
+df["Grade"] = ["A", "A+", "B"]
+print("\nAfter Adding Grade Column:\n", df)
+
+# 5. Delete Column
+df.drop("Marks", axis=1, inplace=True)
+print("\nAfter Deleting Marks Column:\n", df)
+
+# 6. Write DataFrame to CSV
+df.to_csv("students.csv", index=False)
+print("\nData written to students.csv")

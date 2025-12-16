@@ -1,0 +1,25 @@
+#8
+class FileManager:
+    def __init__(self, filename):
+        self.filename = filename
+
+    def write_data(self, data):
+        try:
+            with open(self.filename, "w") as f:
+                f.write(data)
+        except Exception as e:
+            print("Error:", e)
+
+    def read_data(self):
+        try:
+            with open(self.filename, "r") as f:
+                return f.read()
+        except FileNotFoundError:
+            print("File not found!")
+
+
+# Main
+obj = FileManager("notes.txt")
+obj.write_data("Learning Python OOP and File Handling.")
+print("File content:\n", obj.read_data())
+

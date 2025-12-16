@@ -1,0 +1,10 @@
+s = input("Enter a string: ")
+
+print("Upper:", s.upper())
+print("Lower:", s.lower())
+print("Title:", s.title())
+print("Length:", len(s))
+print("Replace:", s.replace("a", "@"))
+print("Find 'a':", s.find("a"))
+print("Is Alpha:", s.isalpha())
+print("Is Digit:", s.isdigit())

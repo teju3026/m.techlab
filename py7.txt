@@ -1,0 +1,30 @@
+#7
+from abc import ABC, abstractmethod
+
+class Employee(ABC):
+    def __init__(self, emp_id, name):
+        self.__emp_id = emp_id      # Encapsulation
+        self.__name = name
+
+    def get_details(self):
+        print("Employee ID:", self.__emp_id)
+        print("Name:", self.__name)
+
+    @abstractmethod
+    def display_salary(self):
+        pass
+
+
+class Staff(Employee):
+    def __init__(self, emp_id, name, salary):
+        super().__init__(emp_id, name)
+        self.salary = salary
+
+    def display_salary(self):
+        print("Salary:", self.salary)
+
+
+# Main
+e = Staff(101, "Rahul", 45000)
+e.get_details()
+e.display_salary()

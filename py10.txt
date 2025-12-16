@@ -1,0 +1,39 @@
+import numpy as np
+
+# 1. Creating 1D Array
+a = np.array([1, 2, 3, 4, 5])
+print("1D Array:", a)
+
+# 2. Multi-dimensional (2D) Array
+b = np.array([[1, 2, 3], [4, 5, 6]])
+print("2D Array:\n", b)
+
+# 3. Array of Zeros
+z = np.zeros(5)
+print("Zeros Array:", z)
+
+# 4. Array of Ones
+o = np.ones(5)
+print("Ones Array:", o)
+
+# 5. Array using Range
+r = np.arange(1, 10, 2)
+print("Range Array:", r)
+
+# 6. Array Functions
+print("Sum of a:", np.sum(a))
+print("Max of a:", np.max(a))
+print("Min of a:", np.min(a))
+print("Mean of a:", np.mean(a))
+
+# 7. Indexing and Slicing
+print("First element of a:", a[0])
+print("Slice a[1:4]:", a[1:4])
+
+# 8. Mathematical Operations
+print("Addition:", a + 2)
+print("Multiplication:", a * 2)
+
+# 9. Statistical Operations
+print("Standard Deviation:", np.std(a))
+print("Variance:", np.var(a))

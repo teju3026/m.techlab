@@ -1,0 +1,103 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+# Create main window
+root = tk.Tk()
+root.title("Tkinter GUI Example")
+root.geometry("400x400")
+
+# ====== Menu Bar ======
+menubar = tk.Menu(root)
+root.config(menu=menubar)
+
+# File Menu
+file_menu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="File", menu=file_menu)
+
+file_menu.add_command(
+    label="New",
+    command=lambda: messagebox.showinfo("Menu", "New File Created")
+)
+file_menu.add_command(
+    label="Open",
+    command=lambda: messagebox.showinfo("Menu", "Open File")
+)
+file_menu.add_separator()
+file_menu.add_command(label="Exit", command=root.quit)
+
+# Help Menu
+help_menu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Help", menu=help_menu)
+
+help_menu.add_command(
+    label="About",
+    command=lambda: messagebox.showinfo("About", "Tkinter GUI Demo v1.0")
+)
+
+# ====== Label ======
+tk.Label(root, text="Enter Your Name:", font=("Arial", 10, "bold")).pack(pady=5)
+
+# ====== Entry ======
+name_var = tk.StringVar()
+entry = tk.Entry(root, textvariable=name_var, width=30)
+entry.pack(pady=5)
+
+# ====== Combobox ======
+tk.Label(root, text="Select Your Country:", font=("Arial", 10, "bold")).pack(pady=5)
+
+country_cb = ttk.Combobox(
+    root,
+    values=["India", "USA", "UK", "Canada", "Australia"],
+    state="readonly"
+)
+country_cb.pack(pady=5)
+country_cb.set("Select Country")
+
+# ====== Radio Buttons ======
+tk.Label(root, text="Select Gender:", font=("Arial", 10, "bold")).pack(pady=5)
+
+gender_var = tk.StringVar(value="Male")
+tk.Radiobutton(root, text="Male", variable=gender_var, value="Male").pack()
+tk.Radiobutton(root, text="Female", variable=gender_var, value="Female").pack()
+
+# ====== Check Button ======
+agree_var = tk.BooleanVar()
+tk.Checkbutton(
+    root,
+    text="I agree to the Terms & Conditions",
+    variable=agree_var
+).pack(pady=5)
+
+# ====== Submit Button Function ======
+def submit():
+    if not name_var.get():
+        messagebox.showwarning("Warning", "Please enter your name!")
+        return
+
+    if country_cb.get() == "Select Country":
+        messagebox.showwarning("Warning", "Please select a country!")
+        return
+
+    if not agree_var.get():
+        messagebox.showwarning("Warning", "Please agree to the terms!")
+        return
+
+    info = (
+        f"Name: {name_var.get()}\n"
+        f"Country: {country_cb.get()}\n"
+        f"Gender: {gender_var.get()}"
+    )
+
+    messagebox.showinfo("Submitted Information", info)
+
+# ====== Submit Button ======
+tk.Button(
+    root,
+    text="Submit",
+    bg="green",
+    fg="white",
+    command=submit
+).pack(pady=10)
+
+# ====== Run the window ======
+root.mainloop()

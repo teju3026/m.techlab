@@ -1,0 +1,28 @@
+#6
+class Library:
+    def __init__(self, library_name):
+        self.library_name = library_name
+
+    def show_library(self):
+        print("Library Name:", self.library_name)
+
+
+class Book(Library):
+    def __init__(self, library_name, book_id, title):
+        super().__init__(library_name)
+        self.book_id = book_id
+        self.title = title
+
+    def display(self):
+        self.show_library()
+        print("Book ID:", self.book_id)
+        print("Book Title:", self.title)
+
+
+# Main
+lib = input("Enter Library Name: ")
+bid = int(input("Enter Book ID: "))
+title = input("Enter Book Title: ")
+
+b = Book(lib, bid, title)
+b.display()
